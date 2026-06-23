@@ -16,11 +16,28 @@ class GameEngine {
   }
 
   guessLetter(currentGameState, letter) {
-    return {
+    // NOTA: tratamento de letras já tentadas e de maiúsculas/minúsculas
+    // ainda NÃO está implementado — fica como exercício para os alunos.
+    const guesses = [...currentGameState.guesses, letter];
+    const isCorrect = currentGameState.word.includes(letter);
+    const lives = isCorrect
+      ? currentGameState.lives
+      : currentGameState.lives - 1;
+
+    const newGameState = {
       ...currentGameState,
-      lives: currentGameState.lives - 1,
-      message: `A letra ${letter} não está na palavra.`,
-    }
+      guesses,
+      lives,
+      message: isCorrect
+        ? `Boa! A letra ${letter} está na palavra.`
+        : `A letra ${letter} não está na palavra.`,
+    };
+
+    newGameState.display_word = this._getDisplayWord(newGameState);
+
+    // NOTA: fim de jogo (WIN/LOST) ainda NÃO está implementado —
+    // o status permanece sempre 'RUNNING'. Exercício para os alunos.
+    return newGameState;
   }
 
   handleEvent(event, data, currentGameState) {

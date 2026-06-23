@@ -37,14 +37,17 @@ Then("my number of lives should decrease by {int}", function (livesDecrease) {
 Then(
   "the letter {string} should be added to my guesses",
   function (letter) {
-    throw new Error("TODO: Implement this functionality");
+    assert.ok(
+      currentGameState.guesses.includes(letter),
+      `Expected letter "${letter}" to be in ${JSON.stringify(currentGameState.guesses)}`,
+    );
   },
 );
 
 Then(
   "I should see a message saying the letter is not in the word",
   function () {
-    throw new Error("TODO: Implement this functionality");
+    assert.match(currentGameState.message, /não está na palavra/);
   },
 );
 
@@ -58,5 +61,12 @@ Then(
 );
 
 Then('the letters {string} should be added to my guesses', function (letters) {
-  throw new Error("TODO: Implement this functionality");
+  // "letters" is a comma-separated list, e.g. "a, b, c"
+  const expectedLetters = letters.split(",").map((l) => l.trim());
+  expectedLetters.forEach((letter) => {
+    assert.ok(
+      currentGameState.guesses.includes(letter),
+      `Expected letter "${letter}" to be in ${JSON.stringify(currentGameState.guesses)}`,
+    );
+  });
 });

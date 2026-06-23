@@ -12,6 +12,6 @@ Feature: Game Engine - Guess Letter
   Scenario: Player makes a wrong guess
     When I guess the letter "z"
     Then my number of lives should decrease by 1
-    # And the letter "z" should be added to my guesses
+    And the letter "z" should be added to my guesses
     # And I should see a message saying the letter is not in the word
     But the game status should remain "RUNNING" if I have remaining lives

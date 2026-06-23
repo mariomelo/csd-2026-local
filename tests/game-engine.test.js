@@ -40,6 +40,21 @@ describe('GameEngine Interface', () => {
       expect(updatedState).toHaveProperty('status');
       expect(updatedState).toHaveProperty('guesses');
     });
+
+    it('should decrease lives by 1 when the letter is wrong', () => {
+      // A palavra de teste é "CASA", então "Z" é um palpite errado
+      const initialState = gameEngine.startGame();
+      const updatedState = gameEngine.guessLetter(initialState, 'Z');
+
+      expect(updatedState.lives).toBe(initialState.lives - 1);
+    });
+
+    it('should add the guessed letter to guesses', () => {
+      const initialState = gameEngine.startGame();
+      const updatedState = gameEngine.guessLetter(initialState, 'Z');
+
+      expect(updatedState.guesses).toContain('Z');
+    });
   });
 
   describe('version()', () => {

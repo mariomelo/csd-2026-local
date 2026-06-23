@@ -37,14 +37,17 @@ Then("il mio numero di vite dovrebbe diminuire di {int}", function (livesDecreas
 Then(
   "la lettera {string} dovrebbe essere aggiunta ai miei tentativi",
   function (letter) {
-    throw new Error("TODO: Implementare questa funcionalità");
+    assert.ok(
+      currentGameState.guesses.includes(letter),
+      `Mi aspettavo che la lettera "${letter}" fosse in ${JSON.stringify(currentGameState.guesses)}`,
+    );
   },
 );
 
 Then(
   "dovrei vedere un messaggio che dice che la lettera non è nella parola",
   function () {
-    throw new Error("TODO: Implementare questa funcionalità");
+    assert.match(currentGameState.message, /não está na palavra/);
   },
 );
 
@@ -58,5 +61,12 @@ Then(
 );
 
 Then('le lettere {string} dovrebbero essere aggiunte ai miei tentativi', function (lettere) {
-  throw new Error("TODO: Implementare questa funcionalità");
+  // "lettere" è una lista separata da virgole, es.: "a, b, c"
+  const lettereAttese = lettere.split(",").map((l) => l.trim());
+  lettereAttese.forEach((lettera) => {
+    assert.ok(
+      currentGameState.guesses.includes(lettera),
+      `Mi aspettavo che la lettera "${lettera}" fosse in ${JSON.stringify(currentGameState.guesses)}`,
+    );
+  });
 });

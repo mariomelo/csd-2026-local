@@ -16,9 +16,9 @@ class BaseDictionary extends DictionaryPort {
   }
 
   getRandomWord(difficulty) {
-    // TODO: Students should implement random selection
     // TODO: Optionally filter by difficulty
-    return this.words[0];
+    const randomIndex = Math.floor(Math.random() * this.words.length);
+    return this.words[randomIndex];
   }
 }
 

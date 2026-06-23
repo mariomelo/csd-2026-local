@@ -12,6 +12,6 @@ Funcionalidade: Motor do Jogo - Palpitar Letra
   Cenário: Jogador faz um palpite errado
     Quando eu palpito a letra "z"
     Então meu número de vidas deve diminuir em 1
-    # E a letra "z" deve ser adicionada aos meus palpites
+    E a letra "z" deve ser adicionada aos meus palpites
     # E eu devo ver uma mensagem dizendo que a letra não está na palavra
     Mas o status do jogo deve permanecer "RUNNING" se eu tiver vidas restantes
