@@ -28,8 +28,8 @@ const buildOptions = {
   format: 'iife',
   outdir: outDir,
   logLevel: 'info',
-  // No modo dev, injeta o livereload do esbuild: ao reconstruir (ex.: aluno
-  // editou packages/engine), o navegador recarrega sozinho.
+  // No modo dev, injeta o livereload do esbuild: ao reconstruir (ex.: ao
+  // editar packages/engine), o navegador recarrega sozinho.
   banner:
     mode === 'dev'
       ? { js: "new EventSource('/esbuild').addEventListener('change', () => location.reload());" }

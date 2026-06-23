@@ -16,8 +16,6 @@ class GameEngine {
   }
 
   guessLetter(currentGameState, letter) {
-    // NOTA: tratamento de letras já tentadas e de maiúsculas/minúsculas
-    // ainda NÃO está implementado — fica como exercício para os alunos.
     const guesses = [...currentGameState.guesses, letter];
     const isCorrect = currentGameState.word.includes(letter);
     const lives = isCorrect
@@ -35,8 +33,6 @@ class GameEngine {
 
     newGameState.display_word = this._getDisplayWord(newGameState);
 
-    // NOTA: fim de jogo (WIN/LOST) ainda NÃO está implementado —
-    // o status permanece sempre 'RUNNING'. Exercício para os alunos.
     return newGameState;
   }
 

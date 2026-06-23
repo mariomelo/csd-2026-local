@@ -1,8 +1,5 @@
 /**
  * DictionaryPort - Interface for dictionary implementations
- *
- * Students can create different dictionary adapters by extending this class.
- * Examples: FileDictionary, APIDictionary, DifficultyBasedDictionary, etc.
  */
 
 class DictionaryPort {

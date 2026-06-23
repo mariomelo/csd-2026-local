@@ -4,11 +4,6 @@ const TestDictionary = require('./helpers/test-dictionary');
 
 /**
  * Basic tests for GameEngine interface
- *
- * Students should:
- * - Make these tests pass by implementing game logic
- * - Add more comprehensive tests
- * - Test edge cases and game completion scenarios
  */
 
 describe('GameEngine Interface', () => {

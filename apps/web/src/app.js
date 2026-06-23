@@ -371,7 +371,6 @@ async function handleGameEnd() {
         return;
     }
 
-    // Students will implement score field in gameState
     const score = currentGameState.score;
     if (score !== undefined) {
         await saveScore(playerName, score);
