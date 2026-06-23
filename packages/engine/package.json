@@ -1,0 +1,13 @@
+{
+  "name": "@forca/engine",
+  "version": "1.0.0",
+  "description": "Motor do jogo da forca (arquitetura hexagonal: ports + adapters)",
+  "main": "index.js",
+  "exports": {
+    ".": "./index.js",
+    "./config": "./config.js",
+    "./ports/dictionary-port": "./ports/dictionary-port.js",
+    "./adapters/base-dictionary": "./adapters/base-dictionary.js"
+  },
+  "license": "MIT"
+}

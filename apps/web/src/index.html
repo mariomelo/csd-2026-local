@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hangman Game</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Hangman Game</h1>
+
+        <div class="player-name-section" id="player-name-section" style="display: none;">
+            <label for="player-name-input">Player Name:</label>
+            <input type="text" id="player-name-input" placeholder="Enter your name" maxlength="20">
+        </div>
+
+        <div class="version">
+            Engine Version: <span id="version">Loading...</span>
+        </div>
+
+        <div class="game-info">
+            <div class="lives">
+                Attempts Remaining: <span id="lives">6</span>
+            </div>
+        </div>
+
+        <div class="timer-display" id="timer-display" style="display: none;">
+            <div class="timer-label">Timer</div>
+            <div class="timer-value" id="timer-value">0</div>
+        </div>
+
+        <div class="word-display" id="word-display">_ _ _ _ _ _ _ _ _ _ _</div>
+
+        <div class="guesses">
+            <strong>Letters guessed:</strong> <span id="guessed-letters">None</span>
+        </div>
+
+        <div class="message" id="message">Click "New Game" to start</div>
+
+        <div class="input-section" id="input-section">
+            <input
+                type="text"
+                id="letter-input"
+                placeholder="Type a letter"
+                autocomplete="off"
+            >
+            <button id="guess-button">Submit</button>
+        </div>
+
+        <div class="virtual-keyboard" id="virtual-keyboard" style="display: none;">
+            <!-- Virtual keyboard buttons will be generated here -->
+        </div>
+
+        <div class="controls">
+            <button id="new-game-button" class="primary">New Game</button>
+        </div>
+
+        <div class="difficulty-controls" id="difficulty-controls" style="display: none;">
+            <button class="difficulty-button easy" data-difficulty="easy">Easy</button>
+            <button class="difficulty-button medium" data-difficulty="medium">Medium</button>
+            <button class="difficulty-button hard" data-difficulty="hard">Hard</button>
+        </div>
+
+        <div class="leaderboard-section" id="leaderboard-section" style="display: none;">
+            <h2>Leaderboard</h2>
+            <div class="leaderboard-list" id="leaderboard-list">
+                <p>Loading...</p>
+            </div>
+        </div>
+
+        <div class="reload-notification" id="reload-notification">
+            Engine updated! Page will reload...
+        </div>
+    </div>
+
+    <!-- Money Bag Element -->
+    <img id="money-bag" class="money-bag" src="assets/money-bag.png" alt="Money Bag" style="display: none;">
+
+    <script src="app.js"></script>
+</body>
+</html>

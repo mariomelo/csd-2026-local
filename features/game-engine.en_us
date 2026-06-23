@@ -1,0 +1,17 @@
+#language: en
+
+Feature: Game Engine - Guess Letter
+  As a player
+  I want to guess letters in the hangman game
+  So that I can try to discover the secret word
+
+  Background:
+    Given the secret word is "scrum"
+    And the game has been started
+
+  Scenario: Player makes a wrong guess
+    When I guess the letter "z"
+    Then my number of lives should decrease by 1
+    # And the letter "z" should be added to my guesses
+    # And I should see a message saying the letter is not in the word
+    But the game status should remain "RUNNING" if I have remaining lives

@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Panel - Hangman Game</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        .admin-container {
+            max-width: 800px;
+            margin: 50px auto;
+            padding: 40px;
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+        }
+
+        .admin-header {
+            margin-bottom: 30px;
+            padding-bottom: 20px;
+            border-bottom: 2px solid #667eea;
+        }
+
+        .admin-header h1 {
+            margin: 0;
+            color: #333;
+        }
+
+        .back-link {
+            display: inline-block;
+            margin-bottom: 20px;
+            color: #667eea;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        .back-link:hover {
+            text-decoration: underline;
+        }
+
+        .feature-flag {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px;
+            margin-bottom: 15px;
+            background: #f8f9fa;
+            border-radius: 10px;
+            transition: background 0.3s;
+        }
+
+        .feature-flag:hover {
+            background: #e9ecef;
+        }
+
+        .feature-info h3 {
+            margin: 0 0 5px 0;
+            color: #333;
+        }
+
+        .feature-info p {
+            margin: 0;
+            color: #666;
+            font-size: 0.9rem;
+        }
+
+        .toggle-switch {
+            position: relative;
+            display: inline-block;
+            width: 60px;
+            height: 34px;
+        }
+
+        .toggle-switch input {
+            opacity: 0;
+            width: 0;
+            height: 0;
+        }
+
+        .slider {
+            position: absolute;
+            cursor: pointer;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-color: #ccc;
+            transition: 0.4s;
+            border-radius: 34px;
+        }
+
+        .slider:before {
+            position: absolute;
+            content: "";
+            height: 26px;
+            width: 26px;
+            left: 4px;
+            bottom: 4px;
+            background-color: white;
+            transition: 0.4s;
+            border-radius: 50%;
+        }
+
+        input:checked + .slider {
+            background-color: #667eea;
+        }
+
+        input:checked + .slider:before {
+            transform: translateX(26px);
+        }
+
+        .status-message {
+            padding: 15px;
+            margin-top: 20px;
+            border-radius: 10px;
+            display: none;
+        }
+
+        .status-message.success {
+            background: #d4edda;
+            color: #155724;
+            border: 1px solid #c3e6cb;
+        }
+
+        .status-message.error {
+            background: #f8d7da;
+            color: #721c24;
+            border: 1px solid #f5c6cb;
+        }
+
+        .status-message.show {
+            display: block;
+        }
+    </style>
+</head>
+<body style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); min-height: 100vh;">
+    <div class="admin-container">
+        <a href="./" class="back-link">← Back to Game</a>
+
+        <div class="admin-header">
+            <h1>Admin Panel</h1>
+            <p>Manage feature flags for the Hangman game</p>
+        </div>
+
+        <div id="feature-flags">
+            <div class="feature-flag">
+                <div class="feature-info">
+                    <h3>Virtual Keyboard</h3>
+                    <p>Replace text input with 26 letter buttons (A-Z)</p>
+                </div>
+                <label class="toggle-switch">
+                    <input type="checkbox" id="virtualKeyboard">
+                    <span class="slider"></span>
+                </label>
+            </div>
+
+            <div class="feature-flag">
+                <div class="feature-info">
+                    <h3>Timer</h3>
+                    <p>Send "tick" event to game engine every second while game is running</p>
+                </div>
+                <label class="toggle-switch">
+                    <input type="checkbox" id="timer">
+                    <span class="slider"></span>
+                </label>
+            </div>
+
+            <div class="feature-flag">
+                <div class="feature-info">
+                    <h3>Difficulty Levels</h3>
+                    <p>Replace "New Game" button with Easy, Medium, and Hard difficulty options</p>
+                </div>
+                <label class="toggle-switch">
+                    <input type="checkbox" id="difficulty">
+                    <span class="slider"></span>
+                </label>
+            </div>
+
+            <div class="feature-flag">
+                <div class="feature-info">
+                    <h3>Leaderboard</h3>
+                    <p>Ask for player name and save scores to leaderboard on game completion</p>
+                </div>
+                <label class="toggle-switch">
+                    <input type="checkbox" id="leaderboard">
+                    <span class="slider"></span>
+                </label>
+            </div>
+
+            <div class="feature-flag">
+                <div class="feature-info">
+                    <h3>Money Bag</h3>
+                    <p>Show animated money bag on screen. Click sends "money_bag" event to game engine</p>
+                </div>
+                <label class="toggle-switch">
+                    <input type="checkbox" id="moneyBag">
+                    <span class="slider"></span>
+                </label>
+            </div>
+        </div>
+
+        <div id="status" class="status-message"></div>
+    </div>
+
+    <script src="admin.js"></script>
+</body>
+</html>

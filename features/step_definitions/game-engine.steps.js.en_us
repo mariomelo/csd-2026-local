@@ -1,0 +1,62 @@
+const { Given, When, Then } = require("@cucumber/cucumber");
+const assert = require("assert");
+const GameEngine = require("@forca/engine");
+const Config = require("@forca/engine/config");
+const TestDictionaryAdapter = require("../../tests/helpers/test-dictionary");
+
+let gameEngine;
+let initialGameState;
+let currentGameState;
+
+Given("the secret word is {string}", function (word) {
+  const testDictionary = new TestDictionaryAdapter(word);
+  Config.setDictionaryAdapter(testDictionary);
+});
+
+Given("the game has been started", function () {
+  gameEngine = GameEngine;
+  initialGameState = gameEngine.startGame();
+  currentGameState = { ...initialGameState };
+});
+
+When("I guess the letter {string}", function (letter) {
+  currentGameState = gameEngine.guessLetter(currentGameState, letter);
+});
+
+Then('my number of lives should remain the same', function () {
+  assert.strictEqual(currentGameState.lives, initialGameState.lives);
+});
+
+Then("my number of lives should decrease by {int}", function (livesDecrease) {
+  assert.strictEqual(
+    currentGameState.lives,
+    initialGameState.lives - livesDecrease,
+  );
+});
+
+Then(
+  "the letter {string} should be added to my guesses",
+  function (letter) {
+    throw new Error("TODO: Implement this functionality");
+  },
+);
+
+Then(
+  "I should see a message saying the letter is not in the word",
+  function () {
+    throw new Error("TODO: Implement this functionality");
+  },
+);
+
+Then(
+  "the game status should remain {string} if I have remaining lives",
+  function (status) {
+    if (currentGameState.lives > 0) {
+      assert.strictEqual(currentGameState.status, status);
+    }
+  },
+);
+
+Then('the letters {string} should be added to my guesses', function (letters) {
+  throw new Error("TODO: Implement this functionality");
+});

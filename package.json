@@ -1,0 +1,39 @@
+{
+  "name": "csd-forca-2026",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Jogo da Forca - Template para ensino de desenvolvimento ágil (Certified Scrum Developer)",
+  "workspaces": [
+    "packages/engine",
+    "apps/cli",
+    "apps/web"
+  ],
+  "scripts": {
+    "start": "node apps/cli/index.js",
+    "web": "npm run preview -w @forca/web",
+    "web:dev": "npm run dev -w @forca/web",
+    "build:web": "npm run build -w @forca/web",
+    "test": "jest",
+    "tdd:watch": "jest --watch",
+    "test:coverage": "jest --coverage",
+    "test:bdd": "mkdir -p reports && cucumber-js",
+    "test:all": "npm run test && npm run test:bdd"
+  },
+  "keywords": ["forca", "hangman", "game", "education", "agile", "csd"],
+  "author": "",
+  "license": "MIT",
+  "devDependencies": {
+    "@cucumber/cucumber": "^10.0.0",
+    "jest": "^29.0.0"
+  },
+  "jest": {
+    "testEnvironment": "node",
+    "collectCoverageFrom": [
+      "packages/engine/**/*.js",
+      "apps/cli/**/*.js",
+      "!**/node_modules/**"
+    ],
+    "coverageDirectory": "coverage",
+    "coverageReporters": ["text", "lcov", "html"]
+  }
+}
